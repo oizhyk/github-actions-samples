@@ -143,20 +143,15 @@ jobs:
     - name: Deploy updated Kubernetes resources
       run: |
         kubectl apply -k k8s/ 
-   
-    # DO SOME CHECKS HERE BEFORE COMMIT
-    #- name: Deploy updated Kubernetes resources
-    #  run: |
-    #    kubectl apply -k k8s/
 
-  #   # REMOVE OLD DEPLOYMENT!!
-  #   - name: Remove old namespace
-  #     run: |
-  #       namespacePresentOld=`kubectl get ns | grep ${{ env.OLD_NAMESPACE }} | wc -l`
-  #       if [ $namespacePresentOld -eq 1 ]
-  #       then
-  #         kubectl delete ns ${{ env.OLD_NAMESPACE }} --wait=true
-  #       fi
+    # REMOVE OLD DEPLOYMENT!!
+    - name: Remove old namespace
+      run: |
+        namespacePresentOld=`kubectl get ns | grep ${{ env.OLD_NAMESPACE }} | wc -l`
+        if [ $namespacePresentOld -eq 1 ]
+        then
+          kubectl delete ns ${{ env.OLD_NAMESPACE }} --wait=true
+        fi
  
   #   - name: Commit files
   #     run: |
