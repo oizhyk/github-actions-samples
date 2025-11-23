@@ -8,4 +8,4 @@ namespace: hello-gitops
 images:
 - name: hello-gitops
   newName: izhyk/hello-gitops
-  newTag: ca1d3973238feeb1759628b866efa79806dca19d
+  newTag: aed1467ac09f39df6737d4491a60e090f47ade35
